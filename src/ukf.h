@@ -77,6 +77,12 @@ public:
     ///* the current NIS for laser
     double NIS_laser_;
     
+    ///* Radar noise covariance matrix
+    MatrixXd R_radar_;
+    
+    ///* Lidar noise covariance matrix
+    MatrixXd R_lidar_;
+    
     /**
      * Constructor
      */
@@ -115,10 +121,10 @@ public:
     /**
      * Helper Methods
      */
-    MatrixXd AugmentedSigmaPoints();
-    void SigmaPointPrediction(MatrixXd& Xsig_aug, double delta_t);
+    void SigmaPointPrediction(double delta_t);
     void PredictMeanAndCovariance();
     double NormalizeAngle(double ang);
+    void UpdateCommon(MeasurementPackage meas_package, MatrixXd Zsig, int n_z);
 };
 
 #endif /* UKF_H */

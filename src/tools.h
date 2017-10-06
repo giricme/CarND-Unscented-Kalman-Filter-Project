@@ -7,9 +7,6 @@ using Eigen::MatrixXd;
 using Eigen::VectorXd;
 using namespace std;
 
-#define EPSILON1 0.0001
-#define EPSILON2 0.0000001
-
 class Tools {
 public:
   /**
