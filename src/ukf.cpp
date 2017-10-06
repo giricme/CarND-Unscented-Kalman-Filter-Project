@@ -262,12 +262,11 @@ void UKF::Prediction(double delta_t) {
 /**
  * Common update function.
  */
-// Universal update function
 void UKF::UpdateCommon(MeasurementPackage meas_package, MatrixXd Zsig, int n_z) {
     // Mean predicted measurement
     VectorXd z_pred = VectorXd(n_z);
     z_pred.fill(0.0);
-    for (int i=0; i < 2 * n_aug_ + 1; i++) {
+    for (int i = 0; i < 2 * n_aug_ + 1; i++) {
         z_pred = z_pred + weights_(i) * Zsig.col(i);
     }
     //measurement covariance matrix S
